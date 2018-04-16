@@ -45,7 +45,7 @@ int main(int argc,const char *argv[]) {
 
    // fs.open();
     if(!fs || !fs2){
-        printf("读取文件为空！\n");
+        printf("读取文件为空！(Read file is empty!)\n");
         return 0;
     }
     char a[100];
@@ -92,7 +92,7 @@ int main(int argc,const char *argv[]) {
     //读取测试数据
 
     if(!fs3){
-        printf("test.dat 读取文件为空！\n");
+        printf("test.dat 读取文件为空！(test.dat read file is empty!)\n");
         return 0;
     }
     char b[100];
@@ -110,16 +110,17 @@ int main(int argc,const char *argv[]) {
     }
     fs3.close();
     //开始训练决策树
-    cout<<"\n训练开始：\n\n";
+    cout<<"\n训练开始 (Training starts)：\n\n";
     QuestDecisionTree* tree=new QuestDecisionTree(data,metadata);
 
     //训练完成，打印出决策树
     Node* root=tree->get_tree();
-    cout<<"训练完成\n";
+    cout<<"训练完成 (Training is done)\n";
     cout<<"深度优先检索训练好的决策树，并打印出每一个节点：\n注：对于确定性属性，Quest决策树首先需要将确定性属性转化为顺序属性，故训练好的决策树节点只保留了转换后的分裂值。"<<endl;
+    cout<< "Depth first retrieves the trained decision tree and prints out each node:\nNote: For deterministic attributes, the Quest decision tree \n first needs to convert deterministic attributes into \n sequential attributes, so the trained decision tree \n node Only guarantee" <<endl;
     print_tree(root);
     cout<<"\n\n";
-    cout<<"测试开始：\n";
+    cout<<"测试开始(Test start): \n";
 
     //输入测试数据，并打印出测试结果
     double test_num=test_data.size();
@@ -166,11 +167,11 @@ int main(int argc,const char *argv[]) {
         if(pre==lab){
             correct++;
         }
-        cout<<"sample"<<i+1<<":predict "<<pre<<",truelabel "<<lab<<endl;
+        cout<<"sample"<<i+1<<": predict "<<pre<<", truelabel "<<lab<<endl;
     }
-    cout<<"=======================================\n precision:"<<correct/test_num<<endl;
+    cout<<"=======================================\n precision: "<<correct/test_num<<endl;
 
-    cout<<"\n\n 3类 confusion matrix:\n";
+    cout<<"\n\n 3类(classes) confusion matrix:\n";
     for(int i=0;i<confusion.size();i++){
         for(int j=0;j<confusion[i].size();j++){
             cout<<"\t"<<confusion[i][j]<<"\t";
@@ -184,7 +185,7 @@ int main(int argc,const char *argv[]) {
 
     finish=clock();
     totaltime=(double)(finish-start)/CLOCKS_PER_SEC;
-    cout<<"\n此程序的运行时间为"<<totaltime<<"秒！"<<endl;
+    cout<<"\n此程序的运行时间为(The running time of this program is): "<<totaltime<<" 秒(seconds)！"<<endl;
     return 0;
 }
 
@@ -204,10 +205,10 @@ void get_test(Node* tree){
 void print_tree(Node* tree){
 //   深度优先遍历输出决策树
     if(tree->isLeaf==true){
-        cout<<"叶子节点，该分支分类结果：："<<tree->classified<<endl;
+        cout<<"叶子节点，该分支分类结果：：(Leaf node, the branch classification result) "<<tree->classified<<endl;
         return;
     }
-    cout<<"\n"<<"分类属性："<<tree->attribute.name<<"分裂点："<<tree->splitPoint<<endl;
+    cout<<"\n"<<"分类属性(Classification attribute)："<<tree->attribute.name<<" 分裂点(Split point)："<<tree->splitPoint<<endl;
     cout<<"--------------------------------------------------\n";
 
     print_tree(tree->leftChild);
@@ -236,7 +237,7 @@ void decision_rules(Node* tree,int leftorright) {
     //深度优先遍历输出决策树
 
     if(tree->isLeaf){
-        vector_str.push_back("分类结果"+doubleToString(tree->classified));
+        vector_str.push_back("分类结果(Classification result)"+doubleToString(tree->classified));
         //cout<<"叶子节点，该分支分类结果：："<<tree->classified<<endl;
         string s;
         for(int i=0;i<vector_str.size();i++){
