@@ -26,6 +26,12 @@ cmake
 
 `make`
 
+`cd ..`
+
+`cp {trainingdata.csv,matadata.txt,testdata.csv} ./build/`
+
+`cd ./build` 
+
 `./QuestDecisionTree trainingdata.csv matadata.txt testdata.csv`
 
 (make sure the file `trainingdata.csv matadata.txt testdata.csv` exists in your executable directory)
