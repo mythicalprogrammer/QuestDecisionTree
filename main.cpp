@@ -144,23 +144,23 @@ int main(int argc,const char *argv[]) {
         double pre=classfiy(test_data[i],root);
         double lab=test_data[i][test_data[i].size()-1];
 
-        if(lab==1 && pre==1){
+        if(lab==1 && pre==1){ // correctly predicted class attr = 1 
             confusion[0][0]++;
-        }else if(lab==1 && pre==2)
+        }else if(lab==1 && pre==2) // class attr = 1 but incorrectly predicted class attr = 2
             confusion[0][1]++;
-        else if(lab==1 && pre ==3)
+        else if(lab==1 && pre ==3) // class attr = 1 but incorrectly predicted class attr = 3 
             confusion[0][2]++;
-        else if(lab==2 && pre==1)
+        else if(lab==2 && pre==1) // class attr = 2 but incorrectly predicted class attr = 1
             confusion[1][0]++;
-        else if(lab==2 && pre==2)
+        else if(lab==2 && pre==2) // correctly predicted class attr = 2
             confusion[1][1]++;
-        else if(lab==2 && pre==3 )
+        else if(lab==2 && pre==3 ) // class attr = 2 but incorrectly predict class attr = 3
             confusion[1][2]++;
-        else if(lab==3 && pre==1)
+        else if(lab==3 && pre==1) // class attr = 3  but incorrectly predict class attr = 1 
             confusion[2][0]++;
-        else if(lab==3 && pre==2)
+        else if(lab==3 && pre==2) // class attr = 3 but incorrectly predict class attr = 2 
             confusion[2][1]++;
-        else if(lab==3 && pre==3)
+        else if(lab==3 && pre==3) // correctly predicted class attr = 3 
             confusion[2][2]++;
 
 
